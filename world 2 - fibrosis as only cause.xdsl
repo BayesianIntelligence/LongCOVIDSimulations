@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network4" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Risk_group">
+			<state id="High" />
+			<state id="Low" />
+			<probabilities>0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Mild_disease">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Risk_group</parents>
+			<probabilities>0.12 0.88 0.09 0.91</probabilities>
+		</cpt>
+		<cpt id="Severe_disease">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Mild_disease Risk_group</parents>
+			<probabilities>0.8 0.2 0.01 0.99 0 1 0 1</probabilities>
+		</cpt>
+		<cpt id="Treatment">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Mild_disease Severe_disease Risk_group</parents>
+			<probabilities>0.8 0.2 0.01 0.99 0.8 0.2 0.01 0.99 0 1 0 1 0 1 0 1</probabilities>
+		</cpt>
+		<cpt id="R1">
+			<state id="Severe" />
+			<state id="MildMod" />
+			<state id="No" />
+			<parents>Mild_disease Severe_disease</parents>
+			<probabilities>0.9 0.1 0 0.05 0.65 0.3 0.01 0.01 0.98 0.01 0.01 0.98</probabilities>
+		</cpt>
+		<cpt id="I1">
+			<state id="Severe" />
+			<state id="MildMod" />
+			<state id="No" />
+			<parents>Severe_disease R1</parents>
+			<probabilities>0.02 0.06 0.92 0.005 0.01 0.985 0 0.01 0.99 0.01 0.04 0.95 0.001 0.005 0.994 0 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="R3a">
+			<state id="Severe" />
+			<state id="MildMod" />
+			<state id="No" />
+			<parents>Treatment R1</parents>
+			<probabilities>0.05 0.05 0.9 0.01 0.04 0.95 0.01 0.01 0.98 0.1 0.2 0.7 0.05 0.1 0.85 0.01 0.01 0.98</probabilities>
+		</cpt>
+		<cpt id="Symptoms_t1">
+			<state id="Reported" />
+			<state id="NotReported" />
+			<parents>I1 R1</parents>
+			<probabilities>0.99 0.01 0.99 0.01 0.99 0.01 0.99 0.01 0.9 0.1 0.8 0.2 0.95 0.05 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="I2">
+			<state id="Severe" />
+			<state id="MildMod" />
+			<state id="No" />
+			<parents>I1</parents>
+			<probabilities>1 0 0 0.08 0.92 0 0.001 0.014 0.985</probabilities>
+		</cpt>
+		<cpt id="Fatigue_t3">
+			<state id="Reported" />
+			<state id="NotReported" />
+			<parents>I2</parents>
+			<probabilities>0.99 0.01 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Lowest_SpO2">
+			<state id="Lt90" />
+			<state id="Lt94" />
+			<state id="Gt94" />
+			<parents>R1 I1</parents>
+			<probabilities>0.99 0.01 0 0.9 0.08 0.02 0.8 0.15 0.05 0.95 0.04 0.01 0.3 0.4 0.3 0.1 0.4 0.5 0.9 0.08 0.02 0 0.05 0.95 0 0 1</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 5.0.5310.0 ACADEMIC" name="Network4">
+			<node id="Mild_disease">
+				<name>M1: Mild disease</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>89 169 190 232</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<node id="Severe_disease">
+				<name>V1: Severe disease</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>145 250 250 312</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<node id="Treatment">
+				<name>T1: Monoclonal antibodies</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>264 267 391 346</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<node id="R1">
+				<name>R1: Reversible organ dysfunction</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>66 331 212 409</position>
+				<barchart active="true" width="128" height="88" />
+			</node>
+			<node id="I1">
+				<name>P1: Persistent organ dysfunction</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>152 459 298 537</position>
+				<barchart active="true" width="128" height="88" />
+			</node>
+			<node id="R3a">
+				<name>R3a: Circulating spike protein</name>
+				<interior color="fff0f8" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>381 331 527 409</position>
+				<barchart active="true" width="128" height="88" />
+			</node>
+			<node id="Symptoms_t1">
+				<name>S1: Symptoms</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>83 599 196 654</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<node id="I2">
+				<name>P2: Fibrosis</name>
+				<interior color="fff0f8" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>474 459 620 537</position>
+				<barchart active="true" width="128" height="88" />
+			</node>
+			<node id="Fatigue_t3">
+				<name>S3: Fatigue</name>
+				<interior color="fff0f8" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>398 599 511 654</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<textbox>
+				<caption>t=1: </caption>
+				<font color="000000" name="Arial" size="14" />
+				<position>67 20 104 42</position>
+			</textbox>
+			<textbox>
+				<caption>Mechanisms</caption>
+				<font color="000000" name="Arial" size="11" />
+				<position>79 438 162 455</position>
+			</textbox>
+			<textbox>
+				<caption>Lived experience</caption>
+				<font color="000000" name="Arial" size="11" />
+				<position>79 664 188 681</position>
+			</textbox>
+			<textbox>
+				<caption>Start of acute infection\n(day 0)</caption>
+				<font color="000000" name="Arial" size="14" />
+				<position>103 20 291 64</position>
+			</textbox>
+			<textbox>
+				<caption>t=2: </caption>
+				<font color="000000" name="Arial" size="14" />
+				<position>373 20 410 42</position>
+			</textbox>
+			<textbox>
+				<caption>End of acute infection\n(e.g. 5 days, 30 days)</caption>
+				<font color="000000" name="Arial" size="14" />
+				<position>409 20 592 64</position>
+			</textbox>
+			<textbox>
+				<caption>Only t1 and t2 are used in the simulations\n\nThere is no (notable) link between circulating spike protein and fibrosis (or other persistent dysfunctions), in either world 1 or world 2\n\nWe bias by evidence of mild disease (because everyone in simulation cohort has mild disease)</caption>
+				<font color="000000" name="Arial" size="12" />
+				<position>741 239 941 473</position>
+			</textbox>
+			<textbox>
+				<caption>This model still</caption>
+				<font color="000000" name="Arial" size="12" />
+				<position>1013 243 1115 261</position>
+			</textbox>
+			<node id="Risk_group">
+				<name>B: Risk group</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>303 109 404 172</position>
+				<barchart active="true" width="128" height="66" />
+			</node>
+			<node id="Lowest_SpO2">
+				<name>RP2a: Lowest SpO2</name>
+				<interior color="ffffff" />
+				<outline color="333333" />
+				<font color="000000" name="Arial" size="12" />
+				<position>239 598 352 653</position>
+				<barchart active="true" width="128" height="89" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
